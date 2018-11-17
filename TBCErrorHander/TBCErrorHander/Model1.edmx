@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BugTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="IssueId" />
+          </Key>
+          <Property Name="IssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Solution" Type="nvarchar(max)" />
+          <Property Name="IssueStatusId" Type="int" Nullable="false" />
+          <Property Name="InsertedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SolvedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ListItem">
+          <Key>
+            <PropertyRef Name="ListItemId" />
+          </Key>
+          <Property Name="ListItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListItemCategoryId" Type="int" Nullable="false" />
+          <Property Name="ListItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListItemCategory">
+          <Key>
+            <PropertyRef Name="ListItemCategoryId" />
+          </Key>
+          <Property Name="ListItemCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ListitemcategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Issue_Issue">
+          <End Role="ListItem" Type="Self.ListItem" Multiplicity="1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItem">
+              <PropertyRef Name="ListItemId" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="IssueStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListItem_ListItemCategory">
+          <End Role="ListItemCategory" Type="Self.ListItemCategory" Multiplicity="1" />
+          <End Role="ListItem" Type="Self.ListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItemCategory">
+              <PropertyRef Name="ListItemCategoryId" />
+            </Principal>
+            <Dependent Role="ListItem">
+              <PropertyRef Name="ListItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_ListItem">
+          <End Role="ListItem" Type="Self.ListItem" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItem">
+              <PropertyRef Name="ListItemId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BugTrackerModelStoreContainer">
+          <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListItem" EntityType="Self.ListItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListItemCategory" EntityType="Self.ListItemCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Issue_Issue" Association="Self.FK_Issue_Issue">
+            <End Role="ListItem" EntitySet="ListItem" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListItem_ListItemCategory" Association="Self.FK_ListItem_ListItemCategory">
+            <End Role="ListItemCategory" EntitySet="ListItemCategory" />
+            <End Role="ListItem" EntitySet="ListItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_ListItem" Association="Self.FK_Person_ListItem">
+            <End Role="ListItem" EntitySet="ListItem" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BugTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BugTrackerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Issues" EntityType="BugTrackerModel.Issue" />
+          <EntitySet Name="ListItems" EntityType="BugTrackerModel.ListItem" />
+          <EntitySet Name="ListItemCategories" EntityType="BugTrackerModel.ListItemCategory" />
+          <EntitySet Name="People" EntityType="BugTrackerModel.Person" />
+          <AssociationSet Name="FK_Issue_Issue" Association="BugTrackerModel.FK_Issue_Issue">
+            <End Role="ListItem" EntitySet="ListItems" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ListItem_ListItemCategory" Association="BugTrackerModel.FK_ListItem_ListItemCategory">
+            <End Role="ListItemCategory" EntitySet="ListItemCategories" />
+            <End Role="ListItem" EntitySet="ListItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_ListItem" Association="BugTrackerModel.FK_Person_ListItem">
+            <End Role="ListItem" EntitySet="ListItems" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="IssueId" />
+          </Key>
+          <Property Name="IssueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IssueStatusId" Type="Int32" Nullable="false" />
+          <Property Name="InsertedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SolvedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListItem" Relationship="BugTrackerModel.FK_Issue_Issue" FromRole="Issue" ToRole="ListItem" />
+        </EntityType>
+        <EntityType Name="ListItem">
+          <Key>
+            <PropertyRef Name="ListItemId" />
+          </Key>
+          <Property Name="ListItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ListItemCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ListItemName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Issues" Relationship="BugTrackerModel.FK_Issue_Issue" FromRole="ListItem" ToRole="Issue" />
+          <NavigationProperty Name="ListItemCategory" Relationship="BugTrackerModel.FK_ListItem_ListItemCategory" FromRole="ListItem" ToRole="ListItemCategory" />
+          <NavigationProperty Name="People" Relationship="BugTrackerModel.FK_Person_ListItem" FromRole="ListItem" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="ListItemCategory">
+          <Key>
+            <PropertyRef Name="ListItemCategoryId" />
+          </Key>
+          <Property Name="ListItemCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ListitemcategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ListItems" Relationship="BugTrackerModel.FK_ListItem_ListItemCategory" FromRole="ListItemCategory" ToRole="ListItem" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ListItem" Relationship="BugTrackerModel.FK_Person_ListItem" FromRole="Person" ToRole="ListItem" />
+        </EntityType>
+        <Association Name="FK_Issue_Issue">
+          <End Type="BugTrackerModel.ListItem" Role="ListItem" Multiplicity="1" />
+          <End Type="BugTrackerModel.Issue" Role="Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItem">
+              <PropertyRef Name="ListItemId" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="IssueStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ListItem_ListItemCategory">
+          <End Type="BugTrackerModel.ListItemCategory" Role="ListItemCategory" Multiplicity="1" />
+          <End Type="BugTrackerModel.ListItem" Role="ListItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItemCategory">
+              <PropertyRef Name="ListItemCategoryId" />
+            </Principal>
+            <Dependent Role="ListItem">
+              <PropertyRef Name="ListItemCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_ListItem">
+          <End Type="BugTrackerModel.ListItem" Role="ListItem" Multiplicity="1" />
+          <End Type="BugTrackerModel.Person" Role="Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ListItem">
+              <PropertyRef Name="ListItemId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BugTrackerModelStoreContainer" CdmEntityContainer="BugTrackerEntities">
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="BugTrackerModel.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="SolvedBy" ColumnName="SolvedBy" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="IssueStatusId" ColumnName="IssueStatusId" />
+                <ScalarProperty Name="Solution" ColumnName="Solution" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListItems">
+            <EntityTypeMapping TypeName="BugTrackerModel.ListItem">
+              <MappingFragment StoreEntitySet="ListItem">
+                <ScalarProperty Name="ListItemName" ColumnName="ListItemName" />
+                <ScalarProperty Name="ListItemCategoryId" ColumnName="ListItemCategoryId" />
+                <ScalarProperty Name="ListItemId" ColumnName="ListItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListItemCategories">
+            <EntityTypeMapping TypeName="BugTrackerModel.ListItemCategory">
+              <MappingFragment StoreEntitySet="ListItemCategory">
+                <ScalarProperty Name="ListitemcategoryName" ColumnName="ListitemcategoryName" />
+                <ScalarProperty Name="ListItemCategoryId" ColumnName="ListItemCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="BugTrackerModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

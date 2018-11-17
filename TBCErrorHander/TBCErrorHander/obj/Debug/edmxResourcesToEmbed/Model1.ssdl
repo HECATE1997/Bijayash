@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BugTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+    </Key>
+    <Property Name="IssueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Solution" Type="nvarchar(max)" />
+    <Property Name="IssueStatusId" Type="int" Nullable="false" />
+    <Property Name="InsertedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SolvedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ListItem">
+    <Key>
+      <PropertyRef Name="ListItemId" />
+    </Key>
+    <Property Name="ListItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ListItemCategoryId" Type="int" Nullable="false" />
+    <Property Name="ListItemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListItemCategory">
+    <Key>
+      <PropertyRef Name="ListItemCategoryId" />
+    </Key>
+    <Property Name="ListItemCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ListitemcategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="PersonId" />
+    </Key>
+    <Property Name="PersonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Mobile" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Issue_Issue">
+    <End Role="ListItem" Type="Self.ListItem" Multiplicity="1" />
+    <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListItem">
+        <PropertyRef Name="ListItemId" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="IssueStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ListItem_ListItemCategory">
+    <End Role="ListItemCategory" Type="Self.ListItemCategory" Multiplicity="1" />
+    <End Role="ListItem" Type="Self.ListItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListItemCategory">
+        <PropertyRef Name="ListItemCategoryId" />
+      </Principal>
+      <Dependent Role="ListItem">
+        <PropertyRef Name="ListItemCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Person_ListItem">
+    <End Role="ListItem" Type="Self.ListItem" Multiplicity="1" />
+    <End Role="Person" Type="Self.Person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ListItem">
+        <PropertyRef Name="ListItemId" />
+      </Principal>
+      <Dependent Role="Person">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BugTrackerModelStoreContainer">
+    <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListItem" EntityType="Self.ListItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListItemCategory" EntityType="Self.ListItemCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Issue_Issue" Association="Self.FK_Issue_Issue">
+      <End Role="ListItem" EntitySet="ListItem" />
+      <End Role="Issue" EntitySet="Issue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ListItem_ListItemCategory" Association="Self.FK_ListItem_ListItemCategory">
+      <End Role="ListItemCategory" EntitySet="ListItemCategory" />
+      <End Role="ListItem" EntitySet="ListItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Person_ListItem" Association="Self.FK_Person_ListItem">
+      <End Role="ListItem" EntitySet="ListItem" />
+      <End Role="Person" EntitySet="Person" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

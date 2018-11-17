@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BugTrackerModelStoreContainer" CdmEntityContainer="BugTrackerEntities">
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="BugTrackerModel.Issue">
+        <MappingFragment StoreEntitySet="Issue">
+          <ScalarProperty Name="SolvedBy" ColumnName="SolvedBy" />
+          <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+          <ScalarProperty Name="IssueStatusId" ColumnName="IssueStatusId" />
+          <ScalarProperty Name="Solution" ColumnName="Solution" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListItems">
+      <EntityTypeMapping TypeName="BugTrackerModel.ListItem">
+        <MappingFragment StoreEntitySet="ListItem">
+          <ScalarProperty Name="ListItemName" ColumnName="ListItemName" />
+          <ScalarProperty Name="ListItemCategoryId" ColumnName="ListItemCategoryId" />
+          <ScalarProperty Name="ListItemId" ColumnName="ListItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListItemCategories">
+      <EntityTypeMapping TypeName="BugTrackerModel.ListItemCategory">
+        <MappingFragment StoreEntitySet="ListItemCategory">
+          <ScalarProperty Name="ListitemcategoryName" ColumnName="ListitemcategoryName" />
+          <ScalarProperty Name="ListItemCategoryId" ColumnName="ListItemCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="BugTrackerModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
