@@ -28,7 +28,6 @@ namespace TBCErrorHander
             sda.Fill(dt);
             if(dt.Rows[0][0].ToString()=="1")
             {
-                
                 BugTrackerEntities bte = new BugTrackerEntities();
                 var item = bte.People.Where(a => a.UserName == textBox1.Text).SingleOrDefault();
                 UserSessionModel session = new UserSessionModel();

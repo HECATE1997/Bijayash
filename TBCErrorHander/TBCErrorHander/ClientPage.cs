@@ -40,9 +40,9 @@ namespace TBCErrorHander
 
         private void viewIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // aci = new ClientAddIssue(session);
-            //aci.MdiParent = this;
-            //aci.Show();
+            ClientViewIssue cvi = new ClientViewIssue(session);
+            cvi.MdiParent = this;
+            cvi.Show();
         }
     }
 }
