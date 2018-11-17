@@ -83,7 +83,7 @@ namespace TBCErrorHander
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

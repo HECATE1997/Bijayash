@@ -146,15 +146,22 @@ namespace TBCErrorHander
             {
                 BugTrackerEntities bte = new BugTrackerEntities();
                 var data = bte.Issues.Where(a => a.Title == comboBox1.Text).SingleOrDefault();
-                data.Solution = richTextBox1.Text;
+                data.Description = richTextBox1.Text;
                 data.SolvedBy = comboBox2.Text;
-                if (checkBox1.Checked)
+                if(data.IssueStatusId==11)
                 {
-                    data.IssueStatusId = 11;
+                    MessageBox.Show("Issue is already Re-Opened", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                bte.Entry(data).State = EntityState.Modified;
-                bte.SaveChanges();
-                MessageBox.Show("Saved");
+                else
+                {
+                    if (checkBox1.Checked)
+                    {
+                        data.IssueStatusId = 11;
+                    }
+                    bte.Entry(data).State = EntityState.Modified;
+                    bte.SaveChanges();
+                    MessageBox.Show("Saved");
+                }
             }
             catch (Exception)
             {
