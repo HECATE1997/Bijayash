@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminIssue.Designer.cs">
+      <DependentUpon>AdminIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,12 @@
     </Compile>
     <Compile Include="DeveloperPage.Designer.cs">
       <DependentUpon>DeveloperPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevIssue.Designer.cs">
+      <DependentUpon>DevIssue.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -133,6 +145,9 @@
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSessionModel.cs" />
+    <EmbeddedResource Include="AdminIssue.resx">
+      <DependentUpon>AdminIssue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +162,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientViewIssue.resx">
       <DependentUpon>ClientViewIssue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeveloperPage.resx">
+      <DependentUpon>DeveloperPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevIssue.resx">
+      <DependentUpon>DevIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

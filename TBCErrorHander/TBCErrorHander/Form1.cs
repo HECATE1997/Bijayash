@@ -38,7 +38,7 @@ namespace TBCErrorHander
                 if (item.RoleId == 01)
                 {
                     this.Hide();
-                    AdminPage ap = new AdminPage( );
+                    AdminPage ap = new AdminPage(session);
                     ap.Show();
                 }
                 else if (item.RoleId == 3)
@@ -50,7 +50,7 @@ namespace TBCErrorHander
                 else
                 {
                     this.Hide();
-                    DeveloperPage dp = new DeveloperPage();
+                    DeveloperPage dp = new DeveloperPage(session);
                     dp.Show();
                 }
             }

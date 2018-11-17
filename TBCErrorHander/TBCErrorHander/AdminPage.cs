@@ -12,15 +12,25 @@ namespace TBCErrorHander
 {
     public partial class AdminPage : Form
     {
+        public UserSessionModel session { get; set; }
+        string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;Persist Security Info=True;User ID=sa;Password=Bijayash1997";
+
         public AdminPage()
         {
             InitializeComponent();
         }
-        
+
+        public AdminPage(UserSessionModel usm)
+        {
+            InitializeComponent();
+            session = usm;
+        }
 
         private void issuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AdminIssue ar = new AdminIssue(session);
+            ar.MdiParent = this;
+            ar.Show();
         }
 
         private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
