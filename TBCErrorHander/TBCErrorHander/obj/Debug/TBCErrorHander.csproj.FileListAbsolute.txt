@@ -39,3 +39,6 @@ E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\EntityFramework
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\EntityFramework.xml
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\EntityFramework.SqlServer.xml
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.csproj.CopyComplete
+E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.DeveloperPage.resources
+E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.DevIssue.resources
+E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.AdminIssue.resources
