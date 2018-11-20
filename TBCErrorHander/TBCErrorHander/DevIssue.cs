@@ -16,7 +16,7 @@ namespace TBCErrorHander
     public partial class DevIssue : Form
     {
         public UserSessionModel session { get; set; }
-        string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;Persist Security Info=True;User ID=sa;Password=Bijayash1997";
+        //string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;Persist Security Info=True;User ID=sa;Password=Bijayash1997";
 
         public DevIssue()
         {
@@ -34,7 +34,7 @@ namespace TBCErrorHander
         {
             try
             {
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(session.connectionstring);
                 con.Open();
                 SqlCommand sda = new SqlCommand("Select IssueId,Title from Issue where SolvedBy='" + session.UserName + "'AND IssueStatusId <> 10", con);
                 sda.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace TBCErrorHander
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(connection);
+            SqlConnection con = new SqlConnection(session.connectionstring);
             con.Open();
             SqlCommand sqlCmd = new SqlCommand("Select * from Issue where Title ='" + comboBox1.Text + "'", con);
             sqlCmd.ExecuteNonQuery();
