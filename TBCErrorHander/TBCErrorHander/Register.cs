@@ -62,7 +62,7 @@ namespace TBCErrorHander
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            textBox2.PasswordChar = '*';
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -75,6 +75,20 @@ namespace TBCErrorHander
             this.Close();
             Form1 f1 = new Form1();
             f1.Show();
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox4.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox4.Text = "";
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.PasswordChar = '*';
         }
     }
 }

@@ -83,17 +83,21 @@ namespace TBCErrorHander
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            textBox2.PasswordChar = '*';
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-
+            textBox3.PasswordChar = '*';
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox4.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Please enter only numbers.");
+                textBox4.Text = "";
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

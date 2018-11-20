@@ -79,7 +79,7 @@ namespace TBCErrorHander
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            textBox2.PasswordChar = '*';
         }
 
         private void button2_Click(object sender, EventArgs e)
