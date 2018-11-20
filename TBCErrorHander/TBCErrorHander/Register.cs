@@ -13,12 +13,15 @@ namespace TBCErrorHander
 {
     public partial class Register : Form
     {
-        public Register()
+        public UserSessionModel session { get; set; }
+
+        public Register(UserSessionModel usm)
         {
             InitializeComponent();
+            session = usm;
         }
 
-        string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;User ID=sa;Password=Bijayash1997";
+        //string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;User ID=sa;Password=Bijayash1997";
         private void Register_Load(object sender, EventArgs e)
         {
 
@@ -37,7 +40,7 @@ namespace TBCErrorHander
             else
             {
                 int Role = 3;
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(session.connectionstring);
                 con.Open();
                 SqlCommand sqlcmd = new SqlCommand("SpPersonIns", con);
                 sqlcmd.CommandType = CommandType.StoredProcedure;

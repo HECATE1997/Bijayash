@@ -44,5 +44,10 @@ namespace TBCErrorHander
             cvi.MdiParent = this;
             cvi.Show();
         }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

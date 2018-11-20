@@ -99,7 +99,9 @@ namespace TBCErrorHander
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Register ss = new Register();
+            UserSessionModel session = new UserSessionModel();
+            session.connectionstring = connection;
+            Register ss = new Register(session);
             this.Hide();
             ss.Show();
         }
