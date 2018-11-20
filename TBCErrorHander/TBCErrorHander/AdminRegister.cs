@@ -14,11 +14,12 @@ namespace TBCErrorHander
     public partial class AdminRegister : Form
     {
         int Role = 0;
-        string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;User ID=sa;Password=Bijayash1997";
-
-        public AdminRegister()
+        //string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;User ID=sa;Password=Bijayash1997";
+        public UserSessionModel session { get; set; }
+        public AdminRegister(UserSessionModel session)
         {
             InitializeComponent();
+            session = session;
         }
 
         private void AdminRegister_Load(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace TBCErrorHander
                     Role = 2;
                 }
                 
-                SqlConnection con = new SqlConnection(connection);
+                SqlConnection con = new SqlConnection(session.connectionstring);
                 con.Open();
                 SqlCommand sqlcmd = new SqlCommand("SpPersonIns", con);
                 sqlcmd.CommandType = CommandType.StoredProcedure;

@@ -13,7 +13,6 @@ namespace TBCErrorHander
     public partial class AdminPage : Form
     {
         public UserSessionModel session { get; set; }
-        string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;Persist Security Info=True;User ID=sa;Password=Bijayash1997";
 
         public AdminPage()
         {
@@ -35,7 +34,7 @@ namespace TBCErrorHander
 
         private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminRegister ar = new AdminRegister();
+            AdminRegister ar = new AdminRegister(session);
             ar.MdiParent = this;
             ar.Show();
         }

@@ -33,7 +33,8 @@ namespace TBCErrorHander
                 UserSessionModel session = new UserSessionModel();
                 session.PersonId = item.PersonId;
                 session.RoleId = item.RoleId;
-                session.UserName = item.UserName;                
+                session.UserName = item.UserName;
+                session.connectionstring = connection;
 
                 if (item.RoleId == 01)
                 {
