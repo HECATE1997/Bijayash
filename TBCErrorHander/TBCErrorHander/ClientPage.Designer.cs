@@ -62,27 +62,27 @@
             this.addIssueToolStripMenuItem,
             this.viewIssueToolStripMenuItem});
             this.issueToolStripMenuItem.Name = "issueToolStripMenuItem";
-            this.issueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.issueToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.issueToolStripMenuItem.Text = "Issue";
             // 
             // addIssueToolStripMenuItem
             // 
             this.addIssueToolStripMenuItem.Name = "addIssueToolStripMenuItem";
-            this.addIssueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addIssueToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addIssueToolStripMenuItem.Text = "Add Issue";
             this.addIssueToolStripMenuItem.Click += new System.EventHandler(this.addIssueToolStripMenuItem_Click);
             // 
             // viewIssueToolStripMenuItem
             // 
             this.viewIssueToolStripMenuItem.Name = "viewIssueToolStripMenuItem";
-            this.viewIssueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewIssueToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.viewIssueToolStripMenuItem.Text = "View Issue";
             this.viewIssueToolStripMenuItem.Click += new System.EventHandler(this.viewIssueToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -94,8 +94,10 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimizeBox = false;
             this.Name = "ClientPage";
             this.Text = "ClientPage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -29,6 +29,7 @@ namespace TBCErrorHander
             session = usm;
             fillComboBox();
             fillDevComboBox();
+            fillIssueStatusComboBox();
         }
 
 
@@ -78,6 +79,29 @@ namespace TBCErrorHander
             }
         }
 
+        void fillIssueStatusComboBox()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connection);
+                con.Open();
+                SqlCommand sda = new SqlCommand("select ListItemName from ListItem where ListItemCategoryId=2", con);
+                sda.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sc = new SqlDataAdapter(sda);
+                sc.Fill(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    comboBox3.Items.Add(dr["ListItemName"].ToString());
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
@@ -99,9 +123,6 @@ namespace TBCErrorHander
 
                 string solution = (string)sdr["Solution"].ToString();
                 richTextBox2.Text = solution;
-
-                
-
                 string status = "";
                 BugTrackerEntities bte = new BugTrackerEntities();
                 var item = bte.Issues.Where(a => a.Title == comboBox1.Text).SingleOrDefault();
@@ -121,7 +142,7 @@ namespace TBCErrorHander
                 {
                     status = "Re Opened";
                 }
-                textBox1.Text = status;
+                comboBox3.Text = status;
                 comboBox2.Text = item.SolvedBy;
                 byte[] arr = item.Image;
                 MemoryStream ms = new MemoryStream(arr);
@@ -148,20 +169,24 @@ namespace TBCErrorHander
                 var data = bte.Issues.Where(a => a.Title == comboBox1.Text).SingleOrDefault();
                 data.Description = richTextBox1.Text;
                 data.SolvedBy = comboBox2.Text;
-                if(data.IssueStatusId==11)
+                if (comboBox3.Text == "Pending")
                 {
-                    MessageBox.Show("Issue is already Re-Opened", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    data.IssueStatusId = 4;
                 }
+                else if (comboBox3.Text == "OnProgress")
+                {
+                    data.IssueStatusId = 7;
+                }
+                else if (comboBox3.Text == "Closed")
+                {
+                    data.IssueStatusId = 10;                }
                 else
                 {
-                    if (checkBox1.Checked)
-                    {
-                        data.IssueStatusId = 11;
-                    }
-                    bte.Entry(data).State = EntityState.Modified;
-                    bte.SaveChanges();
-                    MessageBox.Show("Saved");
+                    data.IssueStatusId = 11;
                 }
+                bte.Entry(data).State = EntityState.Modified;
+                bte.SaveChanges();
+                MessageBox.Show("Saved");
             }
             catch (Exception)
             {
@@ -190,6 +215,11 @@ namespace TBCErrorHander
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
