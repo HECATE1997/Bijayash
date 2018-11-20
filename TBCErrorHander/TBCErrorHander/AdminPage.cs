@@ -45,5 +45,10 @@ namespace TBCErrorHander
             Form1 ss = new Form1();
             ss.Show();
         }
+
+        private void gitRepoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.com.np/");
+        }
     }
 }

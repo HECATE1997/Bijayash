@@ -84,6 +84,7 @@
             this.gitRepoToolStripMenuItem.Name = "gitRepoToolStripMenuItem";
             this.gitRepoToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.gitRepoToolStripMenuItem.Text = "Git Repo";
+            this.gitRepoToolStripMenuItem.Click += new System.EventHandler(this.gitRepoToolStripMenuItem_Click);
             // 
             // AdminPage
             // 
