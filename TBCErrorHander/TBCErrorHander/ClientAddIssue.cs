@@ -56,6 +56,7 @@ namespace TBCErrorHander
             this.Close();
         }
 
+        //Saves Issues
         private void Save_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Trim() == "" || richTextBox1.Text.Trim() == "")

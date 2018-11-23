@@ -30,6 +30,7 @@ namespace TBCErrorHander
             
         }
 
+        //Fills Combo box With Issues list
         void fillComboBox()
         {
             try
@@ -53,6 +54,7 @@ namespace TBCErrorHander
             }
         }
 
+        //WHen combo box is altered data in other boxes are changed
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(session.connectionstring);
@@ -97,6 +99,7 @@ namespace TBCErrorHander
             
         }
 
+        //returns back to cient page
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
