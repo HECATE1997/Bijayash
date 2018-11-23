@@ -37,7 +37,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Save = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -129,6 +131,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // ClientAddIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +153,7 @@
             this.Name = "ClientAddIssue";
             this.Text = "ClientAddIssue";
             ((System.ComponentModel.ISupportInitialize)(this.image1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +170,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Button button2;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
