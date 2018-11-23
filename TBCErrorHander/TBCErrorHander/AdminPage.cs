@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -7,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
 
 namespace TBCErrorHander
 {
@@ -48,7 +50,14 @@ namespace TBCErrorHander
 
         private void gitRepoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.google.com.np/");
+            //System.Diagnostics.Process.Start("https://github.com/");
+
+            IWebDriver driver = new ChromeDriver();
+
+            driver.Url = ("https://github.com/login");
+
+            driver.FindElement(By.Id("login_field")).SendKeys("HECATE1997");
+            driver.FindElement(By.Id("password")).SendKeys("Bijayash1997");
         }
     }
 }
