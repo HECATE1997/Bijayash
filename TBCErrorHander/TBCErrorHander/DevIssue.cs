@@ -23,6 +23,7 @@ namespace TBCErrorHander
             InitializeComponent();
         }
 
+        //Initiates page
         public DevIssue(UserSessionModel usm)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace TBCErrorHander
             fillComboBox();
         }
 
+        //fills combo box with list of issues
         void fillComboBox()
         {
             try
@@ -58,6 +60,7 @@ namespace TBCErrorHander
 
         }
 
+        //Change data when combo box is changed
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(session.connectionstring);
@@ -98,6 +101,7 @@ namespace TBCErrorHander
             this.Close();
         }
 
+        //Edits Issues
         private void button1_Click(object sender, EventArgs e)
         {
             try{ 

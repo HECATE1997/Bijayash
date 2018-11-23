@@ -44,3 +44,4 @@ E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\obj\Debug\TBCErrorHander.AdminIssue.resources
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\WebDriver.dll
 E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\WebDriver.xml
+E:\BijayashWorkingFolder\TBCErrorHander\TBCErrorHander\bin\Debug\ICSharpCode.TextEditor.dll
