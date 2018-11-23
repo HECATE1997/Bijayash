@@ -20,20 +20,21 @@ namespace TBCErrorHander
         {
             InitializeComponent();
         }
-
+        //session call
         public AdminPage(UserSessionModel usm)
         {
             InitializeComponent();
             session = usm;
         }
 
+        //opens Issue page
         private void issuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminIssue ar = new AdminIssue(session);
             ar.MdiParent = this;
             ar.Show();
         }
-
+        //Opens Create developer/admin  Page
         private void createUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AdminRegister ar = new AdminRegister(session);
@@ -41,6 +42,7 @@ namespace TBCErrorHander
             ar.Show();
         }
 
+        //Goes back to login pge
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -48,6 +50,7 @@ namespace TBCErrorHander
             ss.Show();
         }
 
+        //Opens Git Repo
         private void gitRepoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //System.Diagnostics.Process.Start("https://github.com/");

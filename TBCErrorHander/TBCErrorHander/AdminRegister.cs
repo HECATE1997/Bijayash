@@ -27,6 +27,7 @@ namespace TBCErrorHander
 
         }
 
+        //Registers Admin/Developer
         private void button1_Click(object sender, EventArgs e)
         {
             string returnMessage= "";
@@ -91,6 +92,7 @@ namespace TBCErrorHander
             textBox3.PasswordChar = '*';
         }
 
+        //Only numbers are allowed in textbox
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(textBox4.Text, "[^0-9]"))
@@ -105,6 +107,7 @@ namespace TBCErrorHander
 
         }
 
+        //Goes back to admin page
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();

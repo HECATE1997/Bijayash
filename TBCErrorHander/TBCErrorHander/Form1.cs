@@ -20,6 +20,8 @@ namespace TBCErrorHander
 
         string connection = "Data Source=Desktop-d2molfd;Initial Catalog=BugTracker;User ID=sa;Password=Bijayash1997";
 
+        //Process for Login
+
         private void button1_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(connection);

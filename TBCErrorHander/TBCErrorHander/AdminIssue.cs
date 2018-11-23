@@ -32,6 +32,7 @@ namespace TBCErrorHander
             fillIssueStatusComboBox();
         }
 
+        //Fills Combo box with list of Issues
 
         void fillComboBox()
         {
@@ -56,6 +57,7 @@ namespace TBCErrorHander
             }
         }
 
+        //Fills Combo box with list of developers
         void fillDevComboBox()
         {
             try
@@ -79,6 +81,7 @@ namespace TBCErrorHander
             }
         }
 
+        //Fills combo box with Issue Status
         void fillIssueStatusComboBox()
         {
             try
@@ -107,7 +110,8 @@ namespace TBCErrorHander
         {
 
         }
-
+        
+        //On change of combo box, datas are inserted in Admin Issue
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(session.connectionstring);
@@ -160,6 +164,7 @@ namespace TBCErrorHander
         {
 
         }
+        //Admin is able to view issue and edit description and issue status
 
         private void button1_Click(object sender, EventArgs e)
         {
